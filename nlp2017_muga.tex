@@ -4,7 +4,7 @@
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{fancybox}
 
-\title{\textbf{Muli-Language Sentiment Analysis of SNS across Differenct Cities}}
+\title{\textbf{Multi-Language Sentiment Analysis of SNS across Different Cities}}
 
 \author{
 \begin{tabular}{cc}
@@ -20,12 +20,46 @@
 
 \section{Introduction}
 \vspace{-2mm}
- Sentiment Analysis can be used for many areas.
-For example,movie or product reviews \cite{us_election} and opinion surveys for elections\cite{movie_review}.
+Sentiment Analysis is a classification of sentences by labelling. 
+Given a sentence, it distinguishes if the input means something happy, negative or neutral.
+These days it is applied to many areas.
+For example, movie or product reviews \cite{movie_review} and opinion surveys for elections \cite{us_election}.
+Sentiment analysis of Social Network Service (SNS) especially has potential to see what people in the Internet are thinking of, what images they are having on some topics.
+Since nowadays billions of people in the world are using smartphones, sentiment analysis of SNS can be helpful to see opinions for certain topic (e.g. TV show, concerts etc.). 
+
+As the EU referendum in U.K in June 2016 shows, the result varied obviously by areas in the country \cite{uk_referendum}.
+Not only this vote, this phenomena are observed also in U.S. presidential election in November 2016 \cite{us_map}.
+Thus, sentimental analysis for different location is necessary task of natural language processing.
+
+In addition, we focus on not only one language but also other languages because even people in the same country or city speak different languages, which happens usually in many places these days.
+With more languages, more precise data can be obtained.
+According to a psychology researches \cite{psychology1} \cite{psychology2}, if people speak in different languages they do not think in the same way.
+Only the perspective of one language is not enough for observing trends especially in big cities where many people from different countries around the world gather.
+
+In this research we propose the system of multi-language sentiment analysis of SNS, specifically Twitter, and we analyse across different locations in different countries.
+With public available twitter data that are annotated by human, we build classifiers to label tweet obtained by locations.
+We picked around 20 cities where English, French, German or Spanish is spoken as official language and the results of every classifier shows the validity of this system (?).
+
 \vspace{-6mm}
+
 \section{Related Work}
 \vspace{-2mm}
-related work
+related work 1, 2, 3
+\vspace{-6mm}
+
+\section{Twitter API}
+\vspace{-2mm}
+explanation of twitter place ID
+\vspace{-6mm}
+
+\section{Experiment}
+\vspace{-2mm}
+experiment
+\vspace{-6mm}
+
+\section{Result}
+\vspace{-2mm}
+result
 \vspace{-6mm}
 
 \section{Conclusion}
@@ -35,5 +69,3 @@ Conclusion
 \bibliographystyle{plain}
 \bibliography{./bibliography}
 \end{document}
-
-
