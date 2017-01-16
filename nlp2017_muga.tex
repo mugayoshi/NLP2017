@@ -35,14 +35,14 @@ Since there are billions of active users, sentiment analysis of Social Network S
 Billions of people in the world are now using the Internet and smartphones.
 Thus sentiment analysis of SNS can be helpful to see opinions for many kinds of topic (e.g. TV show, concerts etc.). 
 
-As the EU referendum in the U.K in June 2016 shows, the result varied clearly by area in the country \cite{uk_referendum}.
+The EU referendum in the U.K in June 2016 showed that the result varied clearly by area in the country \cite{uk_referendum}.
 People in London and Scotland supported for remain but the other area did the opposite.
 Not only this vote in the U.K, this phenomenon was observed also in the U.S. presidential election in November 2016 \cite{us_map}.
 The results of these votes both turned out that people even in the same country have different opinion depending on where they live.
 Not only a large country such as the U.S, but even in the U.K, which is way smaller than the U.S, the gap is widening.
 Hence, sentimental analysis of different locations is a necessary task.
 
-In addition, we focus on four languages because even people in the same country or city speak different languages, which happens usually in many places these days.
+In addition, we focus on four languages because even people in the same country or city speak different languages, which happens usually in many places nowadays.
 With more languages, more precise data can be obtained.
 A psychology research \cite{psychology1} shows language effects on action cognition depending on the language the participant speaks or hears. 
 %Therefore, it is possible to hear opinions from one person if he says in different languages.
@@ -52,7 +52,7 @@ Therefore a perspective of only one language is not enough for observing trends 
 In this paper we propose a system of multi-language sentiment analysis of SNS, specifically Twitter, and we analyse tweets across different locations around the world.
 The reason why we choose Twitter is that thousands of tweets can be searched easily via Twitter API.
 With public available twitter data that are annotated by humans, we build classifiers to label the tweets obtained by location.
-We picked about 13 cities where English, French, German or Spanish is spoken as the official language.
+We pick 12 cities where English, French, German or Spanish is spoken as the official language.
 We explore the difference of distribution of sentiment value between cities and languages.
 %And the result shows the validity of this system.
 
@@ -60,21 +60,22 @@ We explore the difference of distribution of sentiment value between cities and 
 
 \section{Related Work}
 \vspace{-2mm}
-There is a research of multi-language sentiment analysis of social media \cite{related_work1} and the research focuses on 3 languages, English, Spanish and Russian.
+There is a research of multi-language sentiment analysis of social media \cite{related_work1} and the research focuses on three languages, English, Spanish and Russian.
 In the research, Volkova et al. try to explore the gender bias in the use of subjective language and incorporate this bias into models to improve sentiment analysis for the 3 languages.
 They build a model for the analysis with corpus-based language independent approach proposed by \cite{twitter_lexicon}.  
 
 Narr et al. propose a classification method for sentiment analysis that can be applied for multiple languages \cite{dataset}.
-In the research the authors analyse 4 languages, English, French, German and Portuguese.
+In the research the authors analyse four languages, English, French, German and Portuguese.
 They use emoticons as noisy labels to generate training data and train Na\"\i ve Bayes classifier on the collected data.
-The tweets classified by the Na\"\i ve Bayes classifier are evaluated on the human annotated data that we use in this paper.
+The tweets classified by the classifier are evaluated on the human annotated data that we use in this paper.
+%The tweets classified by the Na\"\i ve Bayes classifier are evaluated on the human annotated data that we use in this paper.
 
 Bautin et al. apply another way for multi-language sentiment analysis \cite{related_work3}.
 They explore an approach utilizing machine translation method and perform sentiment analysis on the English translation of a foreign language text.
 The target of their sentiment analysis is News and blogs, not social media like this paper.
 
-Although all of these 3 researches belongs to multi-language sentiment analysis, they do not consider location information.
-We, however, collect tweets in 4 languages by city around the world and build classifiers so that we perform multi-language sentiment analysis between different cities.
+Although all of these three researches belongs to multi-language sentiment analysis, they do not consider location information.
+We, however, collect tweets in four languages by city around the world and build classifiers so that we perform multi-language sentiment analysis between different cities.
 
 \vspace{-6mm}
 
@@ -82,9 +83,9 @@ We, however, collect tweets in 4 languages by city around the world and build cl
 \vspace{-2mm}
 In this paper, we use the place ID in Twitter API \cite{twitter_api_placeid} in order to obtain tweets by each location. 
 Figure \ref{fig:tweet} shows a part of the screenshot that is displayed when a user tweets somewhere in Tokyo.
-The suggested places are shown based on place ID where the user is tweeting.
+The suggested places are shown based on place ID where the user tweets.
 If a user turns on location service, the user can set one of the suggested areas as location information. 
-Even when users don't turn on GPS service on their phone, these places are shown because they are displayed based on place ID of Twitter API.
+Even when users don't turn on GPS service on their phone, these places are shown because they are displayed based on place ID in Twitter API.
 Named locations or districts in a city are given each place ID by Twitter.
 For example, the place ID of Twitter head quarter is ``07d9cd6afd884001".
 There are 3 types of place ID.
@@ -94,7 +95,7 @@ And each place ID contains an attribute of its own coordinates, latitude and gra
 
 \begin{figure}
 	\centering
-	\scalebox{0.8}[0.9]{
+	\scalebox{0.7}[0.8]{
 	\includegraphics[width=5cm]{./fig/tweet.png}
 	}
 	\caption{Suggested places in Tokyo based on Twitter place ID}
@@ -104,7 +105,7 @@ And each place ID contains an attribute of its own coordinates, latitude and gra
 With place ID of an area, tweets from the area can be searched via Twitter API.
 %\cite{search_api}.
 For searching as many tweets as possible, we search tweets via the search API by each district or borough of a city.
-We list up basically all of the districts of a city and then search the coordinates of each district because place ID are found by specifying the coordinate of the place or nearby.
+We list up basically all of the districts of a city and then search the coordinate of each district because place ID are found by specifying the coordinate of the place or nearby.
 Place ID that represents a whole city are also searched.
 %to set up a list of place ID.
 But to avoid to be too complicated, we do not use place ID of named locations.
@@ -120,12 +121,12 @@ By collecting the coordinates of the areas in each city and searching the place 
 %\subsection{overview}
 Figure \ref{fig:overview} describes the overview of the system.
 The system takes collected tweets by city as input.
-They are searched by the Twitter API, specifically place ID, which explained in Section \ref{sec:placeid}.
+They are searched by the Twitter API, specifically with the place ID, which explained in Section \ref{sec:placeid}.
 Tweets are searched by each language by specifying language parameter of the Twitter search API.
 Before the tweets are labelled by the classifiers, they are pre-processed so that emoji unicode in them is replaced with the explanation of the emoji.
 This replacement is applied to all of the languages.
-The classifiers are built by machine learning and it requires training data of annotated tweets, which are labelled positive, negative or neutral.
-In this paper we use 3 kinds of classifiers.
+The classifiers are built by machine learning and they require training data of annotated tweets, which are labelled positive, negative or neutral.
+In this paper we use three kinds of classifiers.
 Two of them are Support Vector Machine (SVM) for multi class, one versus one and one versus all and the other one is Random Forest.
 During classification, the parameters of each classifier are optimised by cross validation.
 In the end, classifiers label input tweets as one of sentimental values, which are positive, negative or neutral.
@@ -135,7 +136,7 @@ In the end, classifiers label input tweets as one of sentimental values, which a
 	\scalebox{1.2}[1.3]{
 	\includegraphics[width=5cm, scale=1.5]{./fig/overview2.png}
 	}
-	\caption{Overview of sentiment analysis by cities}
+	\caption{Overview of sentiment analysis by city}
 	\label{fig:overview}
 \end{figure}
 
@@ -144,7 +145,7 @@ Not only on Twitter but also on SNS as a whole many people are using emoji nowad
 Sometimes it takes an important role of a sentence.
 %For example, figure \ref{fig:crying} shows a sentence with an emoji of smiley with tears and one without.
 In Figure \ref{fig:emoji_replacement}, an emoji at the end of the sentence is replaced with the explanation of the emoji.
-This way, the tweet can have more meaningful characters for classifiers than the unicode of the emoji, which is ``u \textbackslash U0001F625"
+This way, the tweet can have more meaningful characters for classifiers than the unicode of the emoji, which is ``u\textbackslash U0001F625"
 %This replacement is available in all of the 4 languages.
 
 \begin{figure}
@@ -157,8 +158,8 @@ This way, the tweet can have more meaningful characters for classifiers than the
 \end{figure}
 
 %\subsection{Dataset for Machine Learning}
-We do not prepare training dataset ourselves but instead take it from other works.
-The number of dataset of each language are listed in Table \ref{tab:dataset}.
+We do not prepare training datasets ourselves but instead take them from other works.
+The numbers of dataset of each language are listed in Table \ref{tab:dataset}.
 Spanish dataset is much larger than the others because this is the only dataset from \cite{dataset_spanish} and the others are from \cite{dataset}.
 All of the datasets are annotated by people and importantly the tweets in the datasets are labelled sentimental values.
 Therefore they can be considered to be trustful and we believe the amount of the datasets are large enough.
@@ -180,7 +181,7 @@ Therefore they can be considered to be trustful and we believe the amount of the
 We employ three kinds of classifiers in this paper.
 Originally SVM is a binary classification method but it can be used for multi-class classification as well.
 There are two ways for multi-class classification SVM, one versus one and one versus all.
-One versus one compares two classes of N classes and constructs a hyperplane while one versus all compares one of N classes and the others.
+One versus one compares two classes of $N$ classes and constructs a hyperplane while one versus all compares one of $N$ classes and the others.
 Random forest is an ensemble learning method that samples random data and constructs decision trees.
 It classifies based on the results of the multiple decision trees. 
 We apply the API of scikit-learn \cite{scikit} to build these classifiers in Python 2.7.12.
@@ -191,12 +192,12 @@ We apply the API of scikit-learn \cite{scikit} to build these classifiers in Pyt
 \vspace{-2mm}
 Before the experiment of sentiment analysis across cities, we measure F1 scores of each classifier in the four languages to confirm whether the classifiers built with the given dataset work well enough.
 The dataset is divided to training data and test data.
-80 \% of the dataset is training data and the rest is used as test data.
+80 \% of each dataset is training data and the rest is used as test data.
 Table \ref{tab:f1score} shows F1 scores of the classifiers.
 As these scores show, we believe these classifiers work well enough to do experiment of sentiment analysis by city.
 
 \begin{table}[ht]
-	\caption{F1 scores of each classifier in the 4 languages}
+	\caption{F1 scores of each classifier in the four languages}
 	\scalebox{0.8}[0.9]{
 	\begin{tabular}{|c|r|r|r|} \hline
 	Language&One vs. One&One vs. All&Random Forest\\ \hline \hline
@@ -209,16 +210,16 @@ As these scores show, we believe these classifiers work well enough to do experi
 	\label{tab:f1score}
 \end{table}
 
-We choose 13 cities that have a large population, mostly capitals in fact, because it is likely to retrieve many tweets from such cities.
+We choose 12 cities that have a large population, mostly capitals in fact, because it is likely to retrieve many tweets from such cities.
 %Another reason is that the more data we get, the more precise result we can reach to.
 Another reason is that the more data we get, the more precise result we can reach.
-One of the languages has to be spoken as official language in the chosen cities.
+One of the four languages has to be spoken as official language in the chosen cities.
 If possible we choose two cities from the same country. (e.g. New York and San Francisco)
 %For every city, we search almost all of the districts in every city to prepare the place ID list.
 %When preparing place ID list of the cities, 
 
 We managed to retrieve about a million tweets in total from the beginning of November to 26 December 2016.
-During this period, we searched and retrieved tweets of the 13 cities in the four languages by specifying the language parameter in the Twitter search API.
+During this period, we searched and retrieved tweets from the 12 cities in the four languages by specifying the language parameter in the Twitter search API.
 In Table \ref{tab:cities} the cities are listed with the numbers of the retrieved tweets during the period.
 
 After preparing retrieved tweet data for classification as explained in Section \ref{sec:overview}, the three classifiers trained with each language dataset put sentiment values to the retrieved tweets.
@@ -244,7 +245,7 @@ A tweet has to be labelled as one of the sentiment values, positive, negative or
 	Lille & 26,705  & French\\ \hline
 	Paris & 139,260 & French\\ \hline
 	Quebec & 18,995 & French\\ \hline
-	Berlin & 30,804 & French\\ \hline
+	Berlin & 30,804 & German\\ \hline
 	Hamburg & 10,720 & German\\ \hline
 	Vienna & 4,997  & German\\ \hline
 	Barcelona&27,064 & Spanish\\ \hline
@@ -273,7 +274,7 @@ As it shows, the results of SVM (One vs. One and One vs. All) are similar but th
 This happens to almost all of the results whatever language it is.
 Because the results between the classifiers are different, we decide to do chi square test on all of the results.
 
-The null hypothesis of the chi square test is ``If it is the same language, the distributions of sentiment values of the two cities are independent."
+The null hypothesis of the chi square test is ``If it is the same language, the distributions of sentiment values of the two different cities are independent."
 The $\chi^2$ statistic is calculated using the expected frequency and the values in the cross-tabulation.
 Since there are two rows and three columns in the tabulation, the degree of freedom is 2.
 If the $\chi^2$ statistic is greater than 5.991, which is the appropriate critical value at a 5 \% level of significance when degree of freedom is 2, the null hypothesis is rejected.
@@ -285,14 +286,14 @@ And it is concluded that the distributions are not independent.
 	\scalebox{0.8}[0.9]{
 	%\begin{tabular}{|l|r|r|r|r|} \hline
 	\begin{tabular}{|l|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|} \hline
-	City&Positive&Negative&Neutral&Total (tweets)\\ \hline \hline
-	One vs. One& {} & {} & {} & {}\\ 
+	City&Positive (tweets)&Negative (tweets)&Neutral (tweets)&Total (tweets)\\ \hline
+	One vs. One& {} & {} & {} & {}\\ \hline
 	N.Y  & 18,504 (23.07\%) & 21,645 (26.99\%)  & 40,033 (49.94\%) & 80,182\\
 	London & 84,300 (23.66\%)& 80,419 (22.56\%)& 191,508 (53.76\%)& 356,227\\ \hline
-	One vs. All& {} & {} & {} & {}\\ 
+	One vs. All& {} & {} & {} & {}\\ \hline
 	N.Y  & 16,878 (21.05\%)& 21,355 (26.63\%)& 41,949 (52.31\%)& 80,182\\
 	London & 76,704 (21.53\%)& 78,556 (22.05\%)& 200,967 (56.42\%)& 356,227\\ \hline
-	Random Forest& {} & {} & {} & {}\\ 
+	Random Forest& {} & {} & {} & {}\\ \hline
 	N.Y  & 8,538 (10.65 \%)& 10,175 (12.69\%)& 61,469 (76.66\%)& 80,182\\ 
 	London & 36,804 (10.33\%)& 28,896 (8.11\%)& 290,527 (81.56\%)& 356,227\\ \hline
 
@@ -303,13 +304,13 @@ And it is concluded that the distributions are not independent.
 \end{table}
 
 %\subsection{The results of $\chi$ square statistic} 
-Table \ref{tab:result_chi_square} shows the $\chi^2$ statistics of English, French, German and Spanish tweets of each city respectively.
+Table \ref{tab:result_chi_square} shows the $\chi^2$ statistics of English, French, German and Spanish tweets of each combination of the cities respectively.
 We also compare English tweets for three combinations, Paris \& Quebec, Berlin \& Hamburg and Barcelona \& Madrid to see if the result of chi square test is different from the one of the official language of each city.
-For instance, if it is Barcelona we compare English and Spanish.
+For instance, if it is Barcelona we compare its result both in English and Spanish.
 In the table, the numbers coloured red are smaller than 5.991.
 There are eight cases out of 45 where such condition is met.
 In these eight cases, the null hypothesis is accepted and in the other cases it is rejected.
-These chi square tests result imply that except the eight cases location has something to do with emotional reaction among the two cities on Twitter when it is the same language. 
+These results imply that except the eight cases location has something to do with emotional reaction among the two cities on Twitter when it is the same language. 
 As for Paris \&Quebec, Berlin \& Hamburg and Barcelona \& Madrid, the results are consistent between the two languages in the 16 cases out of 18.
 Another way of saying, the results are same in the both languages except for the case of Barcelona \& Madrid.
 %The numbers of retrieved tweets are more or less consistent every week.
@@ -319,7 +320,7 @@ Another way of saying, the results are same in the both languages except for the
 
 \begin{table}[ht]
 	\caption{$\chi^2$ statistics of each language}
-	\scalebox{0.8}[0.9]{
+	\scalebox{0.7}[0.8]{
 	\begin{tabular}{|l|r|r|r|r|} \hline
 	%\begin{tabularx}{50mm}{|X|r|r|r|X|} \hline
 	{}&One vs. One&One vs. All&Random Forest\\ \hline \hline
@@ -359,8 +360,8 @@ Another way of saying, the results are same in the both languages except for the
 \section{Conclusion}
 \vspace{-2mm}
 We proposed a multi-language sentiment analysis on Twitter across different cities.
-Searching tweets by place ID of Twitter API, we managed to retrieve about a million tweets by city in the four languages.
-We employ chi square test as evaluation and for each language the results show in most of the cases the distributions of sentiment values are not independent between the two cities.
+Searching tweets by Twitter place ID, we managed to retrieve about a million tweets by city in the four languages.
+We employ chi square test as evaluation and for each language the results show the distributions of sentiment values are not independent between the two cities in most of the cases.
 %Therefore emotional reaction on Twitter varies depending on cities.
 Since this is acceptable in terms of a cultural aspect, it approves the validity of this sentiment analysis.
 
